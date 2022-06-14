@@ -2,25 +2,19 @@ import React, { useState } from "react"
 import { Link } from 'react-router-dom';
 
 
-const Signup = () => {
+const Signup = (props) => {
     const [user, addUser] = useState({
         username: '',
         email: '',
         password: ''
     })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        console.log(user);
-    }
-
     return (
         <div>
             <h1>Sign Up</h1>
             <Link to='/home'>Home</Link>
             <Link to='/login'>Log In</Link>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => props.signup(e, user)}>
                 <label>Username: </label>
                 <input 
                     type='text' 
